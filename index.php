@@ -4,30 +4,31 @@ require_once('./small/small.php');
 
 $small = new Small();
 
-$small->get('/', function() {
+$small->get('/', function($response) {
 
-    $t = 'get /';
+    $response->setData(['message'=>'get /']);
 
-    return $t;
+    return $response;
 });
 
-$small->post('/', function() {
+$small->post('/', function($response) {
 
-    $t = 'post /';
+    $response->setData(['message'=>'post /']);
 
-    return $t;
+    return $response;
 });
 
-$small->get('example', function() {
+$small->get('example', function($response) {
 
-    $t = 'get /example';
+    $response->setData('<p>Hello World</p>');
+    $response->setResponseType('HTML');
 
-    return $t;
+    return $response;
 });
 
-$small->req('/', 'patch', function() {
+$small->req('/', 'patch', function($response) {
 
-    $t = 'patch /';
+    $response->setData(['message'=>'patch /']);
 
-    return $t;
+    return $response;
 });

@@ -1,5 +1,6 @@
 <?php
 
+require_once('small-response.php');
 require_once('utils.php');
 
 class Small {
@@ -22,7 +23,8 @@ class Small {
         $uri = getRequestUri($this->base_url);
 
         if(getMethod() == $method && $uri == $route) {
-            $this->sendResponse($func());
+            $response = new Response();
+            $this->sendResponse($func($response));
         }
     }
 
@@ -35,6 +37,6 @@ class Small {
     }
 
     private function sendResponse($response) {
-        echo $response;
+        $response->send();
     }
 }

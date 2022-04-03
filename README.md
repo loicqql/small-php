@@ -4,24 +4,28 @@ a small PHP router
 ## Examples
 
 ```php
-$small->get('/', function() {
+$small->get('/', function($response) {
 
-    $r = 'get /';
+    $response->setData(['message'=>'get /']);
 
-    return $r;
+    return $response;
 });
 
-$small->post('example', function() {
+$small->post('example', function($response) {
 
-    $r = 'get /example';
+    $response->setData(<p>Hello World</p>);
+    $response->setResponseType('HTML');
 
-    return $r;
+    return $response;
 });
 
-$small->req('/', 'patch', function() {
+$small->req('/', 'patch', function($response) {
 
-    $r = 'patch /';
+    $response->setData(['message'=>'patch /']);
 
-    return $r;
+    return $response;
 });
 ```
+
+## Response
+return JSON by default
