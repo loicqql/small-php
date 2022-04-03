@@ -19,6 +19,13 @@ $small->post('example', function($response) {
     return $response;
 });
 
+$small->get('example/{name}', function($request, $response) {
+
+    $response->setData(['name'=> $request->resource['name']]);
+
+    return $response;
+});
+
 $small->req('/', 'patch', function($response) {
 
     $response->setData(['message'=>'patch /']);

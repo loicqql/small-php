@@ -1,5 +1,6 @@
 <?php
 
+require_once('small-request.php');
 require_once('small-response.php');
 require_once('utils.php');
 
@@ -22,9 +23,13 @@ class Small {
         $route = normalizeUrl($route);
         $uri = getRequestUri($this->base_url);
 
-        if(getMethod() == $method && $uri == $route) {
-            $response = new Response();
-            $this->sendResponse($func($response));
+		$hasRessource = checkRessource($route, $uri) ? true : false;
+
+        if(getMethod() == $method && ($uri == $route || $hasRessource)) {
+			$request = new Request($route, $this->base_url);
+        	$response = new Response();
+			
+            $this->sendResponse($func($request, $response));
         }
     }
 

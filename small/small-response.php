@@ -9,7 +9,7 @@ class Response {
 		$this->response_type = 'JSON';
 	}
 
-	public function send(Type $var = null) {
+	public function send() {
 		switch ($this->response_type) {
 			case 'JSON':
 				header('Content-type: application/json');

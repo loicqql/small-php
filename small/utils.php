@@ -7,6 +7,7 @@ function normalizeUrl($string) {
     if($string[strlen($string) - 1] != '/') {
         $string .= '/';
     }
+
     return $string;
 }
 
@@ -20,4 +21,19 @@ function getRequestUri($base_url) {
         $uri = substr($uri, strlen($base_url));
     }
     return $uri == '' ? '/' : $uri;
+}
+
+function checkRessource($route, $uri) {
+    if(!str_contains($route, '{')) {
+        return false;
+    }
+
+    $tab = explode('{', $route); // ie example/{name}
+
+    if($tab[0] == substr($uri, 0, (strlen($tab[0]) - strlen($uri)))) {
+        return true;
+    }
+
+    return false;
+
 }
