@@ -4,14 +4,14 @@ a small PHP router
 ## Examples
 
 ```php
-$small->get('/', function($response) {
+$small->get('/', function($request, $response) {
 
     $response->setData(['message'=>'get /']);
 
     return $response;
 });
 
-$small->post('example', function($response) {
+$small->post('example', function($request, $response) {
 
     $response->setData('<p>Hello World</p>');
     $response->setResponseType('HTML');
@@ -26,7 +26,7 @@ $small->get('example/{name}', function($request, $response) {
     return $response;
 });
 
-$small->req('/', 'patch', function($response) {
+$small->req('/', 'patch', function($request, $response) {
 
     $response->setData(['message'=>'patch /']);
 
