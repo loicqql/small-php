@@ -1,5 +1,5 @@
 # Small-PHP
-## a small PHP router
+a small PHP router
 
 ## Examples
 
