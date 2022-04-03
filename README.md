@@ -13,7 +13,7 @@ $small->get('/', function($response) {
 
 $small->post('example', function($response) {
 
-    $response->setData(<p>Hello World</p>);
+    $response->setData('<p>Hello World</p>');
     $response->setResponseType('HTML');
 
     return $response;
