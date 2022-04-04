@@ -13,7 +13,9 @@ $small->get('/', function($request, $response) {
 
 $small->post('/', function($request, $response) {
 
-    $response->setData($request->params['user']);
+    $user = $request->params['user'];
+    $response->setData('<p>Hello '.$user.'</p>');
+    $response->setResponseType('HTML');
 
     return $response;
 });
