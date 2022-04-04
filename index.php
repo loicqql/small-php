@@ -13,7 +13,7 @@ $small->get('/', function($request, $response) {
 
 $small->post('/', function($request, $response) {
 
-    $response->setData(['message'=>'post /']);
+    $response->setData($request->params['user']);
 
     return $response;
 });

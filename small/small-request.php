@@ -19,7 +19,7 @@ class Request {
 	}
 
 	private function getParams() {
-		$this->params = json_decode(file_get_contents('php://input'));
+		$this->params = json_decode(file_get_contents('php://input'), true);
 	}
 
 	private function getRessource() {
