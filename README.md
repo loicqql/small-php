@@ -40,7 +40,7 @@ $small->req('/', 'patch', function($request, $response) {
 ### Request example
 
 ```
-url : https://mydomain.com/example/DkndfS
+url : https://mydomain.com/user/DkndfS
 method : post
 body : { "user": "Loic", "password": "toor" }
 ```
