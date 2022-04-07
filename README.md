@@ -65,9 +65,12 @@ $small->post('/user/{id}', function($request, $response) {
     // return resource. Eg : DkndfS (from {id} in route request)
     $request->resource['id'];
 
+    // return a cookie. See function $response->setCookie()
+    $request->cookies['name'];
+
 
     // return a response
-    return $response->setData(['name'=> $request->resource['name']]);;
+    return $response->setData(['name'=> $request->resource['name']]);
 });
 ```
 
@@ -88,6 +91,8 @@ $small->post('/user/{id}', function($request, $response) {
     // return JSON : array will be converted in JSON
     $response->setData(['name'=> $request->resource['name']]); 
 
+    // set Cookie 
+    $response->setCookie('name', 'value');
     
     return $response;
 });
