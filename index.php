@@ -13,16 +13,15 @@ $small->get('/', function($request, $response) {
 
 $small->post('/', function($request, $response) {
 
+    $response->setResponseType('HTML');
     $user = $request->params['user'];
     $response->setData('<p>Hello '.$user.'</p>');
-    $response->setResponseType('HTML');
 
     return $response;
 });
 
 $small->get('example', function($request, $response) {
 
-    $response->setData('<p>Hello World</p>');
     $response->setResponseType('HTML');
 
     return $response;
