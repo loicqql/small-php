@@ -6,7 +6,7 @@ $small = new Small();
 
 $small->get('/', function($request, $response) {
 
-    $response->setData(['message'=>'get /']);
+    $response->setData(['message'=>$request->cookies['te']]);
 
     return $response;
 });
@@ -28,9 +28,12 @@ $small->get('example', function($request, $response) {
     return $response;
 });
 
-$small->get('example/{name}', function($request, $response) {
+$small->post('example/{name}', function($request, $response) {
 
     $response->setData(['name'=> $request->resource['name']]);
+    $response->setCookie('te', 'val');
+
+    // var_dump($_SERVER);
 
     return $response;
 });

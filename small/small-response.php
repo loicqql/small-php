@@ -21,6 +21,13 @@ class Response {
 		}
 	}
 
+	public function setCookie($name, $value, $expire = NULL, $path = '/') {
+		if(!isset($expire)) {
+			$expire = time()+3600*24*31*12;
+		}
+		setCookie($name, $value, $expire, $path);
+	}
+
 	public function setData($value) {
 		$this->data = $value;
 	}

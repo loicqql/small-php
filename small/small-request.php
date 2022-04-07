@@ -9,6 +9,7 @@ class Request {
 	public $method;
 	public $params;
 	public $resource;
+	public $cookies;
 
   	public function __construct($route, $base_url) {
 		$this->route = $route;
@@ -16,6 +17,7 @@ class Request {
 		str_contains($route, '{') ? $this->getRessource() : '';
 		$this->method = getMethod();
 		$this->getParams();
+		$this->getCookies();
 	}
 
 	private function getParams() {
@@ -28,5 +30,9 @@ class Request {
 		$data = substr($data, 0, -1);
 		$tab = explode('}', $tab[1]);
 		$this->resource = [$tab[0] => $data];
+	}
+
+	private function getCookies() {
+		$this->cookies = $_COOKIE;
 	}
 }
