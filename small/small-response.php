@@ -10,14 +10,16 @@ class Response {
 	}
 
 	public function send() {
-		switch ($this->response_type) {
-			case 'JSON':
-				header('Content-type: application/json');
-				echo json_encode($this->data);
-				break;
-			case 'HTML':
-				echo $this->data;
-				break;
+		if(isset($this->data)) {
+			switch ($this->response_type) {
+				case 'JSON':
+					header('Content-type: application/json');
+					echo json_encode($this->data);
+					break;
+				case 'HTML':
+					echo $this->data;
+					break;
+			}
 		}
 	}
 
@@ -34,5 +36,9 @@ class Response {
 
 	public function setResponseType($value) {
 		$this->response_type = $value;
+	}
+
+	public function setResponseCode($code) {
+		http_response_code($code);
 	}
 }

@@ -93,6 +93,9 @@ $small->post('/user/{id}', function($request, $response) {
 
     // set Cookie 
     $response->setCookie('name', 'value');
+
+    // return http code
+    $response->setResponseCode(401);
     
     return $response;
 });
