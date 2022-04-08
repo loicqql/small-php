@@ -6,40 +6,30 @@ $small = new Small();
 
 $small->get('/', function($request, $response) {
 
-    $response->setData(['message'=>$request->cookies['te']]);
+    $response->setData(['message'=>'get index', 'cookie' => $request->cookies['test']]);
 
     return $response;
 });
 
-$small->post('/', function($request, $response) {
+$small->post('example', function($request, $response) {
 
     $response->setResponseType('HTML');
     $user = $request->params['user'];
     $response->setData('<p>Hello '.$user.'</p>');
-
     return $response;
 });
 
-$small->get('example', function($request, $response) {
-
-    $response->setResponseType('HTML');
-
-    return $response;
-});
-
-$small->post('example/{name}', function($request, $response) {
+$small->get('example/{name}', function($request, $response) {
 
     $response->setData(['name'=> $request->resource['name']]);
-    $response->setCookie('te', 'val');
-
-    // var_dump($_SERVER);
+    $response->setCookie('test', 'wow');
 
     return $response;
 });
 
 $small->req('/', 'patch', function($request, $response) {
 
-    $response->setData(['message'=>'patch /']);
+    $response->setResponseCode(404);
 
     return $response;
 });

@@ -4,6 +4,9 @@ a small PHP router
 ## Examples
 
 ```php
+require_once('./small/small.php');
+$small = new Small();
+
 $small->get('/', function($request, $response) {
 
     $response->setData(['message'=>'get /']);
