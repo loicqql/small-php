@@ -4,11 +4,14 @@ require_once('polyfill.php');
 
 require_once('small-request.php');
 require_once('small-response.php');
+require_once('small-docs.php');
 require_once('utils.php');
 
 class Small {
 
     private $base_url;
+
+    private $docs;
 
     public function __construct($base = null) {
         if(isset($base)) {
@@ -17,6 +20,8 @@ class Small {
         }else {
             $this->base_url = '/';
         }
+
+        $this->docs = new Docs($this->base_url);
     }
 
     public function req($route, $method, $func) {
@@ -33,6 +38,8 @@ class Small {
 			
             $this->sendResponse($func($request, $response));
         }
+
+        $this->docs->new($route, $method);
     }
 
     public function get($route, $func) {

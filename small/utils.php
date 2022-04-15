@@ -37,3 +37,15 @@ function checkRessource($route, $uri) {
     return false;
 
 }
+
+function getRessourceName($route) {
+    if(!str_contains($route, '{')) {
+        return null;
+    }
+
+    $tab = explode('{', $route);
+    $tab = explode('}', $tab[1]);
+
+    return $tab[0];
+
+}
