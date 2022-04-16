@@ -1,3 +1,19 @@
+<?php
+
+$AUTH = false;
+$MDP = 'admin';
+
+if($AUTH) {
+  if ((!isset($_SERVER['PHP_AUTH_USER'])) || $_SERVER['PHP_AUTH_PW'] != $MDP) {
+    header('WWW-Authenticate: Basic realm="My Website"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo '<p>Access denied. You did not enter a password.</p>';
+    exit;
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
