@@ -9,7 +9,7 @@ class Docs {
 		$this->base_url = $base;
 
     //will replace openapi.json by base.json
-    $jsonString = file_get_contents('docs/base.json');
+    $jsonString = file_get_contents(__DIR__ .'/../docs/base.json');
     $this->data = json_decode($jsonString, true);
 	}
 
@@ -37,16 +37,16 @@ class Docs {
 
   private function saveJson() {
 		$newJsonString = json_encode($this->data);
-		file_put_contents('docs/openapi.json', $newJsonString);
+		file_put_contents(__DIR__ .'/../docs/openapi.json', $newJsonString);
   }
 
 	private function getRequestBody() {
-		$jsonString = file_get_contents('docs/requestBody.json');
+		$jsonString = file_get_contents(__DIR__ .'/../docs/requestBody.json');
     return json_decode($jsonString, true);
 	}
 
 	private function getResponses() {
-		$jsonString = file_get_contents('docs/responses.json');
+		$jsonString = file_get_contents(__DIR__ .'/../docs/responses.json');
     return json_decode($jsonString, true);
 	}
 
