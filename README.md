@@ -102,3 +102,8 @@ $small->post('/user/{id}', function($request, $response) {
     return $response;
 });
 ```
+
+## Docs
+/docs Eg : http://localhost/docs
+
+![docs](https://i.imgur.com/AEBWs1z.png)
