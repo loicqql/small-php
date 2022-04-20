@@ -104,6 +104,25 @@ $small->post('/user/{id}', function($request, $response) {
 ```
 
 ## Docs
-/docs Eg : http://localhost/docs
+/docs/index.html
 
 ![docs](https://i.imgur.com/AEBWs1z.png)
+
+## Config apache2 & nginx
+Fallback to index.php instead return a 404 error when files are not found
+### Apache2
+```apache
+<Directory "/web/example.com/htdocs/blog">
+    ...
+    FallbackResource /index.php
+    ...
+</Directory>
+```
+### Nginx
+```nginx
+location / {
+    ...
+    try_files $uri /index.php$is_args$args;
+    ...
+}
+```
