@@ -4,11 +4,14 @@ function normalizeUrl($string) {
     if($string[0] == '/') {
         $string = substr($string, 1);
     }
+    if($string == '') {
+        $string = '/';
+        return $string;
+    }
     if($string[strlen($string) - 1] != '/') {
         $string .= '/';
+        return $string;
     }
-
-    return $string;
 }
 
 function getMethod() {
