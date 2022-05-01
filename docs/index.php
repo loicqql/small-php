@@ -37,7 +37,7 @@ if($AUTH) {
     })
     .then(function(myBlob) {
       window.ui = SwaggerUIBundle({
-        url: './docs/openapi.json',
+        url: './openapi.json',
         dom_id: '#swagger-ui',
       });
     });
