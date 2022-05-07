@@ -39,7 +39,7 @@ class Small {
             $this->sendResponse($func($request, $response));
         }
 
-        $this->docs->new($route, $method);
+        $this->docs->newRoute($route, $method);
     }
 
     public function get($route, $func) {

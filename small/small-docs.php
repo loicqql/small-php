@@ -13,7 +13,7 @@ class Docs {
     $this->data = json_decode($jsonString, true);
 	}
 
-	public function new($route, $method) {
+	public function newRoute($route, $method) {
 		
 		if($route != '/') {
 			$route = $this->base_url . $route;
