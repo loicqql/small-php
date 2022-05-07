@@ -23,7 +23,7 @@ if($AUTH) {
     name="description"
     content="SwaggerIU"
   />
-  <title>SwaggerUI</title>
+  <title>Small-php - SwaggerUI</title>
   <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
 </head>
 <body>
@@ -31,17 +31,10 @@ if($AUTH) {
 <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
 <script>
   window.onload = () => {
-    fetch('/') // generate openapi.json
-    .then(function(response) {
-      return response.blob();
-    })
-    .then(function(myBlob) {
-      window.ui = SwaggerUIBundle({
-        url: './openapi.json',
-        dom_id: '#swagger-ui',
-      });
+    window.ui = SwaggerUIBundle({
+      url: './openapi.json',
+      dom_id: '#swagger-ui',
     });
-    
   };
 </script>
 </body>

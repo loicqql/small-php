@@ -27,7 +27,30 @@ $small->get('example/{name}', function($request, $response) {
     return $response;
 });
 
-$small->req('/', 'patch', function($request, $response) {
+//test docs
+
+$small->req('test', 'patch', function($request, $response) {
+
+    $response->setResponseCode(404);
+
+    return $response;
+});
+
+$small->get('user', 'patch', function($request, $response) {
+
+    $response->setResponseCode(404);
+
+    return $response;
+});
+
+$small->req('user', 'patch', function($request, $response) {
+
+    $response->setResponseCode(404);
+
+    return $response;
+});
+
+$small->req('user/{id}', 'delete', function($request, $response) {
 
     $response->setResponseCode(404);
 
